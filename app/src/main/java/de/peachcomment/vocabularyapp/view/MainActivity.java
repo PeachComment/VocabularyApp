@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initButtonVocabularyList() {
-        Button buttonInfo = (Button) findViewById(R.id.buttonVocabularyList);
-        buttonInfo.setOnClickListener(new View.OnClickListener() {
+        Button buttonVocabularyList = (Button) findViewById(R.id.buttonVocabularyList);
+        buttonVocabularyList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, VocabularyListActivity.class);
