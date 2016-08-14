@@ -8,7 +8,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Vokabelliste"
+            android:text="@string/vocabulary_list"
             android:id="@+id/buttonVocabularyList"
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"
@@ -18,7 +18,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Info"
+            android:text="@string/info"
             android:id="@+id/buttonInfo"
             android:layout_gravity="center_horizontal"
             android:layout_below="@+id/buttonVocabularyList"
@@ -27,7 +27,7 @@
         <Button
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="Beenden"
+            android:text="@string/exit"
             android:id="@+id/buttonExit"
             android:layout_gravity="center_horizontal"
             android:layout_below="@+id/buttonInfo"

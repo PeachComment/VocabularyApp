@@ -76,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        if (id == R.id.action_new_vocabulary) {
+            Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

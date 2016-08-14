@@ -9,11 +9,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class VocabularyDatabaseOpenHelper extends SQLiteOpenHelper {
 
+    private static final String DATABASE_NAME = "vocabularyDatabase";
     private static final int VERSION_1 = 1;
     private static final int CURRENT_VERSION = VERSION_1;
 
-    public VocabularyDatabaseOpenHelper(Context context, String name) {
-        super(context, name, null, CURRENT_VERSION);
+    public VocabularyDatabaseOpenHelper(Context context) {
+        super(context, DATABASE_NAME, null, CURRENT_VERSION);
     }
 
     @Override

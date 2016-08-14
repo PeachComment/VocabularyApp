@@ -11,14 +11,14 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Info"
+        android:text="@string/info"
         android:id="@+id/labelInfo" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="Version 1"
+        android:text="@string/version_1"
         android:id="@+id/labelVersion1"
         android:layout_below="@+id/labelInfo" />
 

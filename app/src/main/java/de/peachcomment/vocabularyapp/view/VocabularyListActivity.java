@@ -1,11 +1,16 @@
 package de.peachcomment.vocabularyapp.view;
 
-import android.support.v7.app.AppCompatActivity;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CursorAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 import de.peachcomment.vocabularyapp.R;
+import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
 
 public class VocabularyListActivity extends AppCompatActivity {
 
@@ -13,6 +18,20 @@ public class VocabularyListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary_list);
+        createVocabularyList();
+    }
+
+    private void createVocabularyList() {
+        VocabularyDatabase db = new VocabularyDatabase(this);
+        Cursor cursor = db.searchAllVocabularies();
+
+        ListView vocabularyList = (ListView) findViewById(R.id.vocabularyListView);
+        String[] displayColumns = new String[]{"word"};
+        int[] displayViews = new int[]{R.id.textViewWord};
+
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.vocabulary_list_entry, cursor, displayColumns, displayViews, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+
+        vocabularyList.setAdapter(adapter);
     }
 
     @Override
