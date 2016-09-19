@@ -2,7 +2,11 @@
 <resources>
     <string name="app_name">Vokabel-App</string>
 
+    <string name="action_cancel">Abbrechen</string>
+    <string name="action_edit_vocabulary">Vokabel bearbeiten</string>
+    <string name="action_new_translation">Neue Übersetzung</string>
     <string name="action_new_vocabulary">Neue Vokabel</string>
+    <string name="action_save">Speichern</string>
     <string name="action_settings">Einstellungen</string>
     <string name="exit">Beenden</string>
     <string name="info">Info</string>

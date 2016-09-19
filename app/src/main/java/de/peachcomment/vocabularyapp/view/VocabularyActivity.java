@@ -1,13 +1,18 @@
 package de.peachcomment.vocabularyapp.view;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import de.peachcomment.vocabularyapp.R;
 
 public class VocabularyActivity extends AppCompatActivity {
+
+    boolean isEditMode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +35,32 @@ public class VocabularyActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+       /* if (id == R.id.action_settings) {
             return true;
+        }*/
+
+        if (id == R.id.action_edit_vocabulary) {
+            isEditMode = true;
+        } else if (id == R.id.action_cancel) {
+            isEditMode = false;
+        } else if (id == R.id.action_save) {
+            isEditMode = false;
         }
 
-        return super.onOptionsItemSelected(item);
+        invalidateOptionsMenu();
+
+        return true;
+    }
+
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem actionEditVocabulary = menu.findItem(R.id.action_edit_vocabulary);
+        actionEditVocabulary.setVisible(!isEditMode);
+        MenuItem actionCancel = menu.findItem(R.id.action_cancel);
+        actionCancel.setVisible(isEditMode);
+        MenuItem actionSave = menu.findItem(R.id.action_save);
+        actionSave.setVisible(isEditMode);
+        MenuItem actionNewTranslation = menu.findItem(R.id.action_new_translation);
+        actionNewTranslation.setVisible(isEditMode);
+        return true;
     }
 }

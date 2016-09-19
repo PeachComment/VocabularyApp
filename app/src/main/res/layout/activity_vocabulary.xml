@@ -18,40 +18,23 @@
         android:layout_weight="0.5"
         android:orientation="vertical">
 
-        <LinearLayout
+
+        <EditText
+            android:id="@+id/wordEditText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <EditText
-                android:id="@+id/wordEditText"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_column="0"
-                android:layout_marginBottom="5dp"
-                android:layout_row="0"
-                android:layout_weight="0.9"
-                android:background="@drawable/border"
-                android:editable="false"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="cat" />
-
-
-            <ImageButton
-                android:id="@+id/button"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_gravity="right"
-                android:layout_row="0"
-                android:layout_weight="0.1"
-                android:src="@drawable/ic_create_black_24dp" />
-        </LinearLayout>
-
+            android:layout_column="0"
+            android:layout_marginBottom="5dp"
+            android:layout_row="0"
+            android:layout_weight="0.9"
+            android:background="@drawable/border"
+            android:editable="false"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="cat" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -60,33 +43,12 @@
         android:layout_weight="0.5"
         android:orientation="vertical">
 
-        <LinearLayout
+        <ListView
+            android:id="@+id/translationListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <ListView
-                android:id="@+id/translationListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.9"
-                android:background="@drawable/border"
-                android:divider="#000000" />
-
-            <ImageButton
-                android:id="@+id/button2"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_column="1"
-                android:layout_gravity="right"
-                android:layout_row="0"
-                android:layout_weight="0.1"
-                android:src="@drawable/ic_add_black_24dp"
-                android:visibility="invisible" />
-
-        </LinearLayout>
-
+            android:background="@drawable/border"
+            android:divider="#000000" />
 
     </LinearLayout>
 

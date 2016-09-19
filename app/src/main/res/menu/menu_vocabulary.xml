@@ -2,8 +2,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="de.peachcomment.vocabularyapp.view.VocabularyActivity">
-    <item android:id="@+id/action_new_vocabulary" android:title="@string/action_new_vocabulary"
-        android:orderInCategory="1" app:showAsAction="never" />
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <item
+        android:id="@+id/action_edit_vocabulary"
+        android:icon="@drawable/ic_create_white_24dp"
+        android:orderInCategory="1"
+        android:title="@string/action_edit_vocabulary"
+        android:visible="true"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_cancel"
+        android:icon="@drawable/ic_not_interested_white_24dp"
+        android:orderInCategory="2"
+        android:title="@string/action_cancel"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_done_white_24dp"
+        android:orderInCategory="3"
+        android:title="@string/action_save"
+        android:visible="false"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_new_translation"
+        android:icon="@drawable/ic_add_white_24dp"
+        android:orderInCategory="4"
+        android:title="@string/action_new_translation"
+        android:visible="false"
+        app:showAsAction="always" />
+    <!--<item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />-->
 </menu>

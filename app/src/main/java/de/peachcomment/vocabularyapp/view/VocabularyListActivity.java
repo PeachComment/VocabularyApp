@@ -1,5 +1,6 @@
 package de.peachcomment.vocabularyapp.view;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -49,7 +50,13 @@ public class VocabularyListActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
+            return true;
+        }*/
+
+        if (id == R.id.action_new_vocabulary) {
+            Intent intent = new Intent(VocabularyListActivity.this, VocabularyActivity.class);
+            startActivity(intent);
             return true;
         }
 
