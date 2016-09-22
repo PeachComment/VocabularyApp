@@ -56,6 +56,7 @@ public class VocabularyListActivity extends AppCompatActivity {
 
         if (id == R.id.action_new_vocabulary) {
             Intent intent = new Intent(VocabularyListActivity.this, VocabularyActivity.class);
+            intent.putExtra("isNewVocabulary","true");
             startActivity(intent);
             return true;
         }

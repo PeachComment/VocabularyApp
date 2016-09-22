@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_new_vocabulary) {
             Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
+            intent.putExtra("isNewVocabulary","true");
             startActivity(intent);
             return true;
         }

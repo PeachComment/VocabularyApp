@@ -39,6 +39,7 @@ public class InfoActivity extends AppCompatActivity {
 
         if (id == R.id.action_new_vocabulary) {
             Intent intent = new Intent(InfoActivity.this, VocabularyActivity.class);
+            intent.putExtra("isNewVocabulary","true");
             startActivity(intent);
             return true;
         }
