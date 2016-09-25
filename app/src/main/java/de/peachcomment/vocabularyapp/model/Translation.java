@@ -7,11 +7,11 @@ import java.util.Date;
  */
 public class Translation {
 
-    private int id;
+    private Integer id;
     private Vocabulary vocabulary;
     private int number;
-    private Date createdOn;
-    private Date lastEditedOn;
+    private Date timestampInsert;
+    private Date timestampLastUpdate;
 
     public int getId() {
         return id;
@@ -37,20 +37,20 @@ public class Translation {
         this.number = number;
     }
 
-    public Date getCreatedOn() {
-        return createdOn;
+    public Date getTimestampInsert() {
+        return timestampInsert;
     }
 
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
+    public void setTimestampInsert(Date timestampInsert) {
+        this.timestampInsert = timestampInsert;
     }
 
-    public Date getLastEditedOn() {
-        return lastEditedOn;
+    public Date getTimestampLastUpdate() {
+        return timestampLastUpdate;
     }
 
-    public void setLastEditedOn(Date lastEditedOn) {
-        this.lastEditedOn = lastEditedOn;
+    public void setTimestampLastUpdate(Date timestampLastUpdate) {
+        this.timestampLastUpdate = timestampLastUpdate;
     }
 
 }

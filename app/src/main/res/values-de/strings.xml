@@ -8,12 +8,19 @@
     <string name="action_new_vocabulary">Neue Vokabel</string>
     <string name="action_save">Speichern</string>
     <string name="action_settings">Einstellungen</string>
+    <string name="cancel_editing_vocabulary_question">Möchten Sie die Bearbeitung der Vokabel wirklich abbrechen und die Änderungen verwerfen?</string>
+    <string name="enter_vocabulary">Vokabel eingeben</string>
+    <string name="error">Fehler</string>
     <string name="exit">Beenden</string>
     <string name="info">Info</string>
+    <string name="no">Nein</string>
     <string name="title_activity_info">Vokabel-App</string>
     <string name="title_activity_vocabulary_list">Vokabel-App</string>
     <string name="title_activity_vocabulary">Vokabel-App</string>
     <string name="version_1">Version 1</string>
+    <string name="vocabulary_exists">Die Vokabel existiert bereits.</string>
     <string name="vocabulary_list">Vokabelliste</string>
+    <string name="warning">Warnung</string>
+    <string name="yes">Ja</string>
 
 </resources>

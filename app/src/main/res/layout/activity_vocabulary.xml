@@ -34,7 +34,8 @@
             android:focusableInTouchMode="true"
             android:gravity="center"
             android:padding="5dp"
-            android:text="cat" />
+            android:text=""
+            android:hint="Vokabel eingeben"/>
 
     </LinearLayout>
 

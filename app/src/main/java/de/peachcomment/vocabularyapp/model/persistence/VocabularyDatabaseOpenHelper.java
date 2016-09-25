@@ -27,8 +27,8 @@ public class VocabularyDatabaseOpenHelper extends SQLiteOpenHelper {
         String sql = "CREATE TABLE vocabulary " +
                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "word VARCHAR(100) NOT NULL UNIQUE, " +
-                "created_on DATE NOT NULL, " +
-                "last_edited_on DATE NOT NULL)";
+                "timestamp_insert DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+                "timestamp_last_update DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP)";
         db.execSQL(sql);
     }
 
@@ -37,8 +37,8 @@ public class VocabularyDatabaseOpenHelper extends SQLiteOpenHelper {
                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "vocabulary_id INTEGER NOT NULL, " +
                 "number INTEGER NOT NULL, " +
-                "created_on DATE NOT NULL, " +
-                "last_edited_on DATE NOT NULL, " +
+                "timestamp_insert DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
+                "timestamp_last_update DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, " +
                 "FOREIGN KEY(vocabulary_id) REFERENCES vocabulary(_id))";
         db.execSQL(sql);
     }

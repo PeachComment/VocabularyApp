@@ -7,12 +7,19 @@
     <string name="action_new_vocabulary">New Vocabulary</string>
     <string name="action_save">Save</string>
     <string name="action_settings">Settings</string>
+    <string name="cancel_editing_vocabulary_question">Do you want stop editing the vocabulary and discard changes?</string>
+    <string name="enter_vocabulary">Enter vocabulary</string>
+    <string name="error">Error</string>
     <string name="exit">Exit</string>
     <string name="info">Info</string>
+    <string name="no">No</string>
     <string name="title_activity_info">Vocabulary App</string>
     <string name="title_activity_vocabulary_list">Vocabulary App</string>
     <string name="title_activity_vocabulary">Vocabulary App</string>
     <string name="version_1">Version 1</string>
+    <string name="vocabulary_exists">The vocabulary already exists.</string>
     <string name="vocabulary_list">Vocabulary List</string>
+    <string name="warning">Warning</string>
+    <string name="yes">Yes</string>
 
 </resources>

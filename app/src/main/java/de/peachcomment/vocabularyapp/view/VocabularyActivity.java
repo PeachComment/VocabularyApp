@@ -5,14 +5,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 
 import de.peachcomment.vocabularyapp.R;
+import de.peachcomment.vocabularyapp.model.Vocabulary;
+import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
 
 public class VocabularyActivity extends AppCompatActivity {
 
+    private Vocabulary vocabulary;
     private boolean isEditMode = false;
 
     @Override
@@ -48,36 +52,16 @@ public class VocabularyActivity extends AppCompatActivity {
             return true;
         }*/
 
-        EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
+        // EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
 
         if (id == R.id.action_edit_vocabulary) {
             setWordEditable(true);
         } else if (id == R.id.action_cancel) {
             setWordEditable(false);
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                    this);
-
-            alertDialogBuilder.setTitle("Your Title");
-
-            alertDialogBuilder
-                    .setMessage("Click yes to exit!")
-                    .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            // TODO
-                        }
-                    })
-                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-
-            alertDialog.show();
+            showWarning();
         } else if (id == R.id.action_save) {
             setWordEditable(false);
+            saveVocabulary();
         }
 
         invalidateOptionsMenu();
@@ -85,6 +69,44 @@ public class VocabularyActivity extends AppCompatActivity {
         return true;
     }
 
+    private void showWarning() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        alertDialogBuilder.setTitle(R.string.warning);
+
+        alertDialogBuilder
+                .setMessage(R.string.cancel_editing_vocabulary_question)
+                .setCancelable(false)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        setWordEditable(true);
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+    }
+
+    private void saveVocabulary() {
+        VocabularyDatabase db = new VocabularyDatabase(VocabularyActivity.this);
+        EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
+        Editable text = wordEditText.getText();
+        if (text != null) {
+            this.vocabulary.setWord(text.toString());
+            db.insertVocabulary(vocabulary);
+            this.isEditMode = false;
+        }
+    }
+
+    @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem actionEditVocabulary = menu.findItem(R.id.action_edit_vocabulary);
         actionEditVocabulary.setVisible(!isEditMode);
@@ -103,5 +125,10 @@ public class VocabularyActivity extends AppCompatActivity {
         wordEditText.setFocusable(isEditable);
         wordEditText.setFocusableInTouchMode(isEditable);
         wordEditText.setClickable(isEditable);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

@@ -8,11 +8,11 @@ import java.util.List;
  */
 public class Vocabulary {
 
-    private int id;
+    private Integer id;
     private String word;
     private List<Translation> translations;
-    private Date createdOn;
-    private Date lastEditedOn;
+    private Date timestampInsert;
+    private Date timestampLastUpdate;
 
     public int getId() {
         return this.id;
@@ -38,20 +38,24 @@ public class Vocabulary {
         this.translations = translations;
     }
 
-    public Date getCreatedOn() {
-        return this.createdOn;
+    public Date getTimestampInsert() {
+        return this.timestampInsert;
     }
 
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
+    public void setTimestampInsert(Date timestampInsert) {
+        this.timestampInsert = timestampInsert;
     }
 
-    public Date getLastEditedOn() {
-        return this.lastEditedOn;
+    public Date getTimestampLastUpdate() {
+        return this.timestampLastUpdate;
     }
 
-    public void setLastEditedOn(Date lastEditedOn) {
-        this.lastEditedOn = lastEditedOn;
+    public void setTimestampLastUpdate(Date timestampLastUpdate) {
+        this.timestampLastUpdate = timestampLastUpdate;
+    }
+
+    public boolean isNew() {
+        return this.id == null;
     }
 
 }
