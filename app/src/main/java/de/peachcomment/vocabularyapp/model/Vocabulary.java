@@ -1,24 +1,27 @@
 package de.peachcomment.vocabularyapp.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+
+import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
 
 /**
  * Created by PeachComment on 29.07.2016.
  */
-public class Vocabulary {
+public class Vocabulary implements Serializable {
 
-    private Integer id;
+    private Long id;
     private String word;
     private List<Translation> translations;
     private Date timestampInsert;
     private Date timestampLastUpdate;
 
-    public int getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -56,6 +59,13 @@ public class Vocabulary {
 
     public boolean isNew() {
         return this.id == null;
+    }
+
+    public boolean isChanged() {
+        if (this.id == null) {
+            return true;
+        }
+        return false;
     }
 
 }

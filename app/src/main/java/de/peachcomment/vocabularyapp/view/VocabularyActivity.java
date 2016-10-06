@@ -1,6 +1,7 @@
 package de.peachcomment.vocabularyapp.view;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import de.peachcomment.vocabularyapp.R;
@@ -25,8 +28,8 @@ public class VocabularyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vocabulary);
 
         Intent intent = getIntent();
-        String isNewVocabulary = intent.getStringExtra("isNewVocabulary");
-        if ("true".equals(isNewVocabulary)) {
+        this.vocabulary = (Vocabulary) intent.getSerializableExtra("Vocabulary");
+        if (this.vocabulary.isNew()) {
             setWordEditable(true);
         } else {
             setWordEditable(false);
@@ -59,9 +62,11 @@ public class VocabularyActivity extends AppCompatActivity {
         } else if (id == R.id.action_cancel) {
             setWordEditable(false);
             showWarning();
+            closeKeyPad();
         } else if (id == R.id.action_save) {
             setWordEditable(false);
             saveVocabulary();
+            closeKeyPad();
         }
 
         invalidateOptionsMenu();
@@ -80,7 +85,12 @@ public class VocabularyActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        finish();
+                        if (vocabulary.isNew()) {
+                            finish();
+                        } else {
+                            isEditMode = false;
+                            invalidateOptionsMenu();
+                        }
                     }
                 })
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -101,9 +111,16 @@ public class VocabularyActivity extends AppCompatActivity {
         Editable text = wordEditText.getText();
         if (text != null) {
             this.vocabulary.setWord(text.toString());
-            db.insertVocabulary(vocabulary);
+            long id = db.insertVocabulary(vocabulary);
+            this.vocabulary.setId(id);
             this.isEditMode = false;
         }
+    }
+
+    private void closeKeyPad() {
+        EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(wordEditText.getWindowToken(), 0);
     }
 
     @Override
@@ -129,6 +146,37 @@ public class VocabularyActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        setResult(RESULT_OK, null);
+        if (this.vocabulary.isChanged()) {
+            showWarningOnBackPressed();
+        } else {
+            super.onBackPressed();
+        }
     }
+
+    private void showWarningOnBackPressed() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        alertDialogBuilder.setTitle(R.string.warning);
+
+        alertDialogBuilder
+                .setMessage(R.string.cancel_editing_vocabulary_question)
+                .setCancelable(false)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        VocabularyActivity.super.onBackPressed();
+                    }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        alertDialog.show();
+    }
+
 }

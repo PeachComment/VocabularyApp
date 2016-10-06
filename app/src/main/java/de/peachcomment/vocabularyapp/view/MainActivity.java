@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import de.peachcomment.vocabularyapp.R;
+import de.peachcomment.vocabularyapp.model.Vocabulary;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.action_new_vocabulary) {
             Intent intent = new Intent(MainActivity.this, VocabularyActivity.class);
-            intent.putExtra("isNewVocabulary","true");
+            intent.putExtra("Vocabulary", new Vocabulary());
             startActivity(intent);
             return true;
         }

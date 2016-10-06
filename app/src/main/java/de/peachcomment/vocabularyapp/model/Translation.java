@@ -7,17 +7,17 @@ import java.util.Date;
  */
 public class Translation {
 
-    private Integer id;
+    private Long id;
     private Vocabulary vocabulary;
     private int number;
     private Date timestampInsert;
     private Date timestampLastUpdate;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

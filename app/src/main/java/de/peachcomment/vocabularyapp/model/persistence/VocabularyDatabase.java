@@ -27,6 +27,11 @@ public class VocabularyDatabase {
         return db.query("vocabulary", null, null, null, null, null, "word");
     }
 
+    public Cursor searchVocabularyById(Integer id) {
+        SQLiteDatabase db = getReadableDatabase();
+        return db.query("vocabulary", null, "WHERE _id = " + id, null, null, null, "word");
+    }
+
     public long insertVocabulary(Vocabulary vocabulary) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("word", vocabulary.getWord());
@@ -45,7 +50,7 @@ public class VocabularyDatabase {
         return this.dbOpenHelper.getWritableDatabase();
     }
 
-    private String getCurrentTimestamp() {
+    public String getCurrentTimestamp() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         Date date = new Date();

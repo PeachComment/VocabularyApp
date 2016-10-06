@@ -8,7 +8,7 @@
     <string name="action_new_vocabulary">Neue Vokabel</string>
     <string name="action_save">Speichern</string>
     <string name="action_settings">Einstellungen</string>
-    <string name="cancel_editing_vocabulary_question">Möchten Sie die Bearbeitung der Vokabel wirklich abbrechen und die Änderungen verwerfen?</string>
+    <string name="cancel_editing_vocabulary_question">Möchtest Du die Bearbeitung der Vokabel wirklich abbrechen und die Änderungen verwerfen?</string>
     <string name="enter_vocabulary">Vokabel eingeben</string>
     <string name="error">Fehler</string>
     <string name="exit">Beenden</string>

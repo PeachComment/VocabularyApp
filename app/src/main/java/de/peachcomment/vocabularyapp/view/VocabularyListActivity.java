@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
 import de.peachcomment.vocabularyapp.R;
+import de.peachcomment.vocabularyapp.model.Vocabulary;
 import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
 
 public class VocabularyListActivity extends AppCompatActivity {
@@ -56,11 +57,21 @@ public class VocabularyListActivity extends AppCompatActivity {
 
         if (id == R.id.action_new_vocabulary) {
             Intent intent = new Intent(VocabularyListActivity.this, VocabularyActivity.class);
-            intent.putExtra("isNewVocabulary","true");
-            startActivity(intent);
+            intent.putExtra("Vocabulary", new Vocabulary());
+            startActivityForResult(intent, 1);
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            Intent refresh = new Intent(this, VocabularyListActivity.class);
+            startActivity(refresh);
+            this.finish();
+        }
     }
 }
