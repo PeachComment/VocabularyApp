@@ -1,4 +1,4 @@
-package de.peachcomment.vocabularyapp.view;
+package de.peachcomment.vocabularyapp.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

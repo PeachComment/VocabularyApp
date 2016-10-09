@@ -1,18 +1,18 @@
-package de.peachcomment.vocabularyapp.view;
+package de.peachcomment.vocabularyapp.view.activity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CursorAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+
+import java.util.List;
 
 import de.peachcomment.vocabularyapp.R;
 import de.peachcomment.vocabularyapp.model.Vocabulary;
-import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
+import de.peachcomment.vocabularyapp.model.persistence.sqlite.VocabularySQLiteDatabase;
 
 public class VocabularyListActivity extends AppCompatActivity {
 
@@ -24,14 +24,19 @@ public class VocabularyListActivity extends AppCompatActivity {
     }
 
     private void createVocabularyList() {
-        VocabularyDatabase db = new VocabularyDatabase(this);
-        Cursor cursor = db.searchAllVocabularies();
+        VocabularySQLiteDatabase db = new VocabularySQLiteDatabase(this);
+        List<Vocabulary> vocabularies = db.searchAllObjects();
+        Vocabulary[] vocabularyArray = new Vocabulary[vocabularies.size()];
+        for (int i = 0; i < vocabularies.size(); i++) {
+            vocabularyArray[i] = vocabularies.get(i);
+        }
 
         ListView vocabularyList = (ListView) findViewById(R.id.vocabularyListView);
         String[] displayColumns = new String[]{"word"};
         int[] displayViews = new int[]{R.id.textViewWord};
 
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.vocabulary_list_entry, cursor, displayColumns, displayViews, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        // SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.vocabulary_list_entry, cursor, displayColumns, displayViews, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        ArrayAdapter adapter = new VocabularyAdapter(this, R.layout.vocabulary_list_entry, R.id.textViewWord, vocabularyArray);
 
         vocabularyList.setAdapter(adapter);
     }

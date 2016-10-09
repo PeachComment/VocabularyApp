@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="de.peachcomment.vocabularyapp.view.VocabularyActivity">
+    tools:context="de.peachcomment.vocabularyapp.view.activity.VocabularyActivity">
     <item
         android:id="@+id/action_edit_vocabulary"
         android:icon="@drawable/ic_create_white_24dp"

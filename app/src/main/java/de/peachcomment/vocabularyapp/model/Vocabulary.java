@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import de.peachcomment.vocabularyapp.model.persistence.VocabularyDatabase;
-
 /**
  * Created by PeachComment on 29.07.2016.
  */

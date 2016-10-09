@@ -1,4 +1,4 @@
-package de.peachcomment.vocabularyapp.model.persistence;
+package de.peachcomment.vocabularyapp.model.persistence.sqlite;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -7,13 +7,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 /**
  * Created by PeachComment on 29.07.2016.
  */
-public class VocabularyDatabaseOpenHelper extends SQLiteOpenHelper {
+public class VocabularySQLiteDatabaseOpenHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "vocabularyDatabase";
     private static final int VERSION_1 = 1;
     private static final int CURRENT_VERSION = VERSION_1;
 
-    public VocabularyDatabaseOpenHelper(Context context) {
+    public VocabularySQLiteDatabaseOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, CURRENT_VERSION);
     }
 

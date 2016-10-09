@@ -8,7 +8,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".view.MainActivity"
+            android:name=".view.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,15 +17,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.InfoActivity"
+            android:name=".view.activity.InfoActivity"
             android:label="@string/title_activity_info" >
         </activity>
         <activity
-            android:name=".view.VocabularyListActivity"
+            android:name=".view.activity.VocabularyListActivity"
             android:label="@string/title_activity_vocabulary_list" >
         </activity>
         <activity
-            android:name=".view.VocabularyActivity"
+            android:name=".view.activity.VocabularyActivity"
             android:label="@string/title_activity_vocabulary" >
         </activity>
     </application>
