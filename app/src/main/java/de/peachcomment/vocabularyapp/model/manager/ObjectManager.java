@@ -3,6 +3,8 @@ package de.peachcomment.vocabularyapp.model.manager;
 import java.util.List;
 
 import de.peachcomment.vocabularyapp.model.cache.Cache;
+import de.peachcomment.vocabularyapp.model.cache.entry.CacheEntry;
+import de.peachcomment.vocabularyapp.model.cache.entry.LruCacheEntry;
 import de.peachcomment.vocabularyapp.model.persistence.Database;
 
 /**
@@ -18,8 +20,16 @@ public abstract class ObjectManager<T> {
         return getDatabase().searchAllObjects();
     }
 
-    public T getObjectById(long id) {
-        return (T) getDatabase().searchObjectById(id);
+    public T getObjectById(Long id) {
+        Cache cache = getCache();
+        CacheEntry entry = getCache().getEntryById(id);
+        if (entry != null) {
+            return (T) entry.getEntry();
+        } else {
+            T object = (T) getDatabase().searchObjectById(id);
+            cache.addEntry(id, new LruCacheEntry(object, object));
+            return object;
+        }
     }
 
     public abstract Cache getCache();
