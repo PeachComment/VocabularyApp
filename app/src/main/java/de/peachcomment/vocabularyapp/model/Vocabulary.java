@@ -60,7 +60,7 @@ public class Vocabulary implements Serializable {
     }
 
     public boolean isChanged() {
-        if (this.id == null) {
+        if (isNew()) {
             return true;
         }
         return false;

@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -31,7 +34,7 @@ public class VocabularyListActivity extends AppCompatActivity {
             vocabularyArray[i] = vocabularies.get(i);
         }
 
-        ListView vocabularyList = (ListView) findViewById(R.id.vocabularyListView);
+        final ListView vocabularyList = (ListView) findViewById(R.id.vocabularyListView);
         String[] displayColumns = new String[]{"word"};
         int[] displayViews = new int[]{R.id.textViewWord};
 
@@ -39,6 +42,17 @@ public class VocabularyListActivity extends AppCompatActivity {
         ArrayAdapter adapter = new VocabularyAdapter(this, R.layout.vocabulary_list_entry, R.id.textViewWord, vocabularyArray);
 
         vocabularyList.setAdapter(adapter);
+
+        vocabularyList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Vocabulary itemAtPosition = (Vocabulary) vocabularyList.getItemAtPosition(position);
+                //Toast.makeText(VocabularyListActivity.this, "" + position + ": " + itemAtPosition.getWord(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(VocabularyListActivity.this, VocabularyActivity.class);
+                intent.putExtra("Vocabulary", itemAtPosition);
+                startActivityForResult(intent, 1);
+            }
+        });
     }
 
     @Override

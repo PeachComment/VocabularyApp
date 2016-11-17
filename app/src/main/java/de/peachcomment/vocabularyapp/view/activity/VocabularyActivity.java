@@ -29,6 +29,10 @@ public class VocabularyActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         this.vocabulary = (Vocabulary) intent.getSerializableExtra("Vocabulary");
+
+        EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
+        wordEditText.setText(vocabulary.getWord());
+
         if (this.vocabulary.isNew()) {
             setWordEditable(true);
         } else {
@@ -149,7 +153,7 @@ public class VocabularyActivity extends AppCompatActivity {
 
     private void setWordEditable(boolean isEditable) {
         EditText wordEditText = (EditText) findViewById(R.id.wordEditText);
-        isEditMode = true;
+        isEditMode = isEditable;
         wordEditText.setFocusable(isEditable);
         wordEditText.setFocusableInTouchMode(isEditable);
         wordEditText.setClickable(isEditable);
