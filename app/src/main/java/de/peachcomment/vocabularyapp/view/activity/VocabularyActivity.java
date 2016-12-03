@@ -98,8 +98,13 @@ public class VocabularyActivity extends AppCompatActivity {
         Editable text = wordEditText.getText();
         if (text != null) {
             this.vocabulary.setWord(text.toString());
-            long id = db.insertObject(vocabulary);
-            this.vocabulary.setId(id);
+            if (this.vocabulary.isNew()) {
+                long id = db.insertObject(vocabulary);
+                this.vocabulary.setId(id);
+            } else {
+                Long id = this.vocabulary.getId();
+                db.updateObject(this.vocabulary);
+            }
             this.isEditMode = false;
         }
     }

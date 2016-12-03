@@ -61,6 +61,17 @@ public class VocabularySQLiteDatabase extends Database<Vocabulary> {
         return db.insert("vocabulary", null, contentValues);
     }
 
+    @Override
+    public void updateObject(Vocabulary vocabulary) {
+        Long id = vocabulary.getId();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("word", vocabulary.getWord());
+        String currentTimestamp = getCurrentTimestamp();
+        contentValues.put("timestamp_last_update", currentTimestamp);
+        SQLiteDatabase db = getWritableDatabase();
+        db.update("vocabulary", contentValues, "_id= ? ", new String[]{id.toString()});
+    }
+
     private SQLiteDatabase getReadableDatabase() {
         return this.dbOpenHelper.getReadableDatabase();
     }

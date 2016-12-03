@@ -13,4 +13,6 @@ public abstract class Database<T> {
 
     public abstract long insertObject(T object);
 
+    public abstract void updateObject(T object);
+
 }
